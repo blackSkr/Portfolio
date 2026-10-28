@@ -1141,12 +1141,22 @@ section[id] { scroll-margin-top: 100px; }
    ===================================================== */
 
 @media (max-width: 1024px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-  .hero-aside { max-width: 360px; margin: 0 auto; order: -1; }
+  /* Mengubah grid jadi 1 kolom, teks duluan baru foto */
+  .hero-inner { 
+    grid-template-columns: 1fr; 
+    gap: 48px; 
+  }
   
-  /* Badge jangan keluar batas layar */
+  /* FOTO DIPINDAH KE BAWAH & DIBUAT LEBIH KECIL */
+  .hero-aside { 
+    max-width: 280px; /* Ukuran foto dikecilkan */
+    margin: 0 auto;   /* Posisi di tengah */
+    /* order: -1; <-- INI DIHAPUS ATAU DI-COMMENT */
+  }
+
+  /* Sesuaikan posisi badge GPA karena fotonya mengecil */
   .hero-float-1 { left: -10px; top: 16px; }
-  .hero-float-2 { right: -10px; bottom: 20px; }
+  .hero-float-2 { right: -16px; bottom: 16px; }
 
   .about-bento { grid-template-columns: repeat(2, 1fr); }
   .bento-intro, .bento-education { grid-column: span 2; }
@@ -1195,13 +1205,15 @@ section[id] { scroll-margin-top: 100px; }
   .nav-toggle { display: flex; }
   .header-actions .btn { display: none; }
 
-  /* Hero Mobile */
+  /* Hero Mobile - Ukuran Foto Lebih Kecil Lagi */
   .hero-name { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+  
+  .hero-aside { max-width: 220px; } /* Ukuran ideal untuk HP */
   .hero-float { padding: 8px 12px; min-width: 80px; }
   .hero-float strong { font-size: 18px; }
   
-  /* Badge GPA diturunkan sedikit agar aman */
-  .hero-float-2 { right: 0; bottom: 12px; transform: translateX(15%); }
+  /* Sesuaikan posisi badge GPA di HP */
+  .hero-float-2 { right: -12px; bottom: 12px; }
 
   /* About Bento Mobile */
   .about-bento { display: flex; flex-direction: column; gap: 12px; }
@@ -1243,18 +1255,8 @@ section[id] { scroll-margin-top: 100px; }
   .hero-name { font-size: 2.2rem; }
   .contact-title { font-size: 2.2rem; }
   
-  /* Sembunyikan badge GPA di layar super sempit agar tidak merusak layout */
-  .hero-float-2 { display: none; }
+  .hero-aside { max-width: 180px; } /* Foto mengecil di layar sempit */
   
   .section-head { gap: 8px; margin-bottom: 32px; }
   .section-meta { width: 100%; margin-left: 0; font-size: 13px; margin-top: -4px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .marquee-track { animation: none; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
 }
