@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TAMBAHAN: maximum-scale=1.0, user-scalable=no agar tidak bisa di-zoom out di HP -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Brilian Satria Pamungkas — Software Engineer</title>
   <meta name="description"
     content="Software Engineer — Full-Stack & Mobile Developer. Berpengalaman di PT Kaltim Prima Coal, CV DEKA, Diskominfo Kaltim." />
@@ -71,11 +72,6 @@
 
       <div class="container hero-inner">
         <div class="hero-main">
-          <!-- <div class="hero-status reveal">
-            <span class="status-dot"></span>
-            <span class="mono">available · 2026</span>
-          </div> -->
-
           <h1 class="hero-name reveal">
             Brilian Satria<br /><em>Pamungkas</em>
           </h1>
@@ -121,26 +117,15 @@
         <aside class="hero-aside reveal">
           <div class="hero-portrait-wrap">
             <figure class="hero-portrait">
-              <img src="assets/img/portfolio\PAS-FOTO-Satria-MERAH-3x4.jpg" alt="Brilian Satria Pamungkas"
+              <!-- FIX: Ganti backslash (\) jadi slash (/) agar foto tidak rusak di GitHub Pages -->
+              <img src="assets/img/portfolio/PAS-FOTO-Satria-MERAH-3x4.jpg" alt="Brilian Satria Pamungkas"
                 onerror="this.src='https://placehold.co/600x800/1a1410/e07a4a?text=Portrait'" />
-              <!-- <figcaption class="mono">// portrait · samarinda</figcaption> -->
             </figure>
             <div class="hero-float hero-float-2">
               <span class="float-label mono">gpa</span>
               <strong>3.89</strong>
               <span class="float-sub mono">polnes / d3</span>
             </div>
-            <!-- <div class="hero-float hero-float-1">
-              <span class="float-label mono">gpa</span>
-              <strong>3.89</strong>
-              <span class="float-sub mono">polnes / d3</span>
-            </div> -->
-
-            <!-- <div class="hero-float hero-float-2">
-              <span class="float-label mono">hki</span>
-              <strong>03</strong>
-              <span class="float-sub mono">software</span>
-            </div> -->
           </div>
         </aside>
       </div>
@@ -248,12 +233,6 @@
             <strong class="stat-value">473</strong>
             <span class="stat-sub mono">POLNES · 2026</span>
           </article>
-
-          <!-- <article class="bento-card bento-stat reveal">
-            <span class="stat-label mono">industry</span>
-            <strong class="stat-value">03</strong>
-            <span class="stat-sub mono">institutions</span>
-          </article> -->
         </div>
 
         <div class="skills-list reveal">
@@ -318,7 +297,6 @@
         <div class="section-head reveal">
           <span class="section-index mono">04</span>
           <h2 class="section-label">Riset</h2>
-          <!-- <span class="section-meta">konferensi</span> -->
         </div>
 
         <div class="research-list" id="researchGrid"></div>

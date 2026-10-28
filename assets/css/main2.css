@@ -44,7 +44,14 @@
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; padding: 0; }
 
-html { -webkit-text-size-adjust: 100%; }
+/* PENGAMAN RESPONSIVE: Mencegah layar bisa digeser ke samping (horizontal scroll) */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font-sans);
   font-size: 16px;
@@ -53,7 +60,6 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
   letter-spacing: -0.005em;
 }
 
@@ -218,7 +224,7 @@ section[id] { scroll-margin-top: 100px; }
 .hero {
   position: relative;
   padding: 130px 0 100px;
-  overflow: hidden;
+  overflow: hidden; /* Penting agar glow tidak bocor ke samping */
 }
 .hero::before {
   content: '';
@@ -1130,97 +1136,118 @@ section[id] { scroll-margin-top: 100px; }
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ============ RESPONSIVE ============ */
-@media (max-width: 1024px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 56px; }
-  .hero-aside { max-width: 400px; margin: 0 auto; order: -1; }
-  .hero-float-1 { left: -16px; top: 16px; }
-  .hero-float-2 { right: -16px; bottom: 32px; }
+/* =====================================================
+   STRICT RESPONSIVE OVERHAUL (MOBILE OPTIMIZATION)
+   ===================================================== */
 
-  .about-bento { grid-template-columns: repeat(6, 1fr); }
-  .bento-intro { grid-column: span 6; }
-  .bento-education { grid-column: span 6; }
-  .bento-stat { grid-column: span 3; }
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-aside { max-width: 360px; margin: 0 auto; order: -1; }
+  
+  /* Badge jangan keluar batas layar */
+  .hero-float-1 { left: -10px; top: 16px; }
+  .hero-float-2 { right: -10px; bottom: 20px; }
+
+  .about-bento { grid-template-columns: repeat(2, 1fr); }
+  .bento-intro, .bento-education { grid-column: span 2; }
+  .bento-stat { grid-column: span 1; }
 
   .exp-featured { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
-  .exp-item { grid-template-columns: 1fr; gap: 10px; }
+  .exp-item { grid-template-columns: 1fr; gap: 12px; }
   .exp-item:hover { transform: none; }
 
-  .projects-grid { grid-template-columns: repeat(4, 1fr); }
-  .project-card { grid-column: span 2; }
-  .project-card:first-child, .project-card.featured {
-    grid-column: span 4;
-    flex-direction: column;
-  }
-  .project-card.featured .project-thumb {
-    width: 100%;
-    aspect-ratio: 16/10;
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-  }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-card { grid-column: span 1; }
+  .project-card:first-child, .project-card.featured { grid-column: span 2; flex-direction: column; }
+  .project-card.featured .project-thumb { width: 100%; aspect-ratio: 16/9; border-right: none; border-bottom: 1px solid var(--line); }
   .project-card.featured .project-body { padding: 28px; }
-  .project-card.featured .project-title { font-size: 1.4rem; }
 
   .research-item { grid-template-columns: 1fr; gap: 12px; }
   .research-year { display: none; }
-
+  
   .cert-item { grid-template-columns: 64px 1fr 70px; }
   .cert-type { display: none; }
 }
 
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
-  .section { padding: 76px 0; }
-  .hero { padding: 110px 0 64px; }
+  .section { padding: 64px 0; }
+  .hero { padding: 110px 0 60px; }
 
+  /* Navbar Mobile */
   .nav {
     position: fixed;
     inset: 72px 0 auto 0;
     background: var(--bg-soft);
     border-bottom: 1px solid var(--line-2);
-    padding: 16px 24px 20px;
-    transform: translateY(-8px);
+    padding: 16px 20px 24px;
+    transform: translateY(-10px);
     opacity: 0;
     pointer-events: none;
     transition: all 0.28s var(--ease);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
   .nav.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
   .nav ul { flex-direction: column; gap: 14px; }
-  .nav a { font-size: 14px; padding: 6px 0; display: block; }
+  .nav a { font-size: 15px; padding: 8px 0; display: block; border-bottom: 1px solid var(--line); }
   .nav a::before { display: none; }
-
+  
   .nav-toggle { display: flex; }
   .header-actions .btn { display: none; }
 
-  .hero-name { font-size: clamp(2.5rem, 12vw, 3.5rem); }
-  .hero-float { padding: 10px 14px; min-width: 92px; }
-  .hero-float strong { font-size: 20px; }
-  .hero-float-1 { left: -8px; }
-  .hero-float-2 { right: -8px; }
+  /* Hero Mobile */
+  .hero-name { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+  .hero-float { padding: 8px 12px; min-width: 80px; }
+  .hero-float strong { font-size: 18px; }
+  
+  /* Badge GPA diturunkan sedikit agar aman */
+  .hero-float-2 { right: 0; bottom: 12px; transform: translateX(15%); }
 
-  .bento-stat { grid-column: span 6; }
-  .about-bento .bento-stat:nth-child(n+5) { grid-column: span 3; }
+  /* About Bento Mobile */
+  .about-bento { display: flex; flex-direction: column; gap: 12px; }
+  .bento-card { padding: 24px; }
+  .bento-stat { padding: 20px; }
+  .skills-list .skill-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
 
-  .skills-list .skill-row { grid-template-columns: 1fr; gap: 6px; }
-
+  /* Experience Mobile */
+  .exp-featured { padding: 20px; gap: 24px; }
+  .exp-featured .exp-role { font-size: 1.4rem; }
+  .exp-item { padding: 20px; }
+  
+  /* Projects Mobile */
   .projects-grid { grid-template-columns: 1fr; }
-  .project-card, .project-card:first-child, .project-card.featured {
-    grid-column: span 1;
-  }
+  .project-card, .project-card:first-child, .project-card.featured { grid-column: span 1; }
+  .project-card.featured .project-body { padding: 20px; }
+  .project-card.featured .project-title { font-size: 1.3rem; }
 
-  .cert-item {
-    grid-template-columns: 56px 1fr auto;
-    gap: 14px;
-    padding: 14px 0;
-  }
+  /* Certifications Mobile */
+  .cert-item { grid-template-columns: 56px 1fr auto; gap: 12px; padding: 12px 0; }
   .cert-thumb { width: 56px; height: 42px; }
+  .cert-title { font-size: 14px; }
+  .cert-issuer { font-size: 12px; }
 
-  .contact { padding: 90px 0 72px; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-link:nth-child(odd) { padding-right: 0; border-right: 0; }
-  .contact-link:nth-child(even) { padding-left: 0; }
+  /* Contact Mobile */
+  .contact { padding: 80px 0 60px; }
+  .contact-grid { display: flex; flex-direction: column; border-top: none; }
+  .contact-link { padding: 18px 0 !important; border-right: none !important; border-bottom: 1px solid var(--line-2); }
+  .contact-link:nth-child(1) { border-top: 1px solid var(--line-2); }
+  .contact-link-value { font-size: 14px; }
 
-  .footer-inner { flex-direction: column; text-align: center; }
+  /* Footer */
+  .footer-inner { flex-direction: column; text-align: center; gap: 12px; }
+}
+
+/* Layar HP Sangat Kecil (iPhone SE, 320px) */
+@media (max-width: 400px) {
+  .container { padding: 0 16px; }
+  .hero-name { font-size: 2.2rem; }
+  .contact-title { font-size: 2.2rem; }
+  
+  /* Sembunyikan badge GPA di layar super sempit agar tidak merusak layout */
+  .hero-float-2 { display: none; }
+  
+  .section-head { gap: 8px; margin-bottom: 32px; }
+  .section-meta { width: 100%; margin-left: 0; font-size: 13px; margin-top: -4px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
