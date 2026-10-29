@@ -234,7 +234,7 @@ const RESEARCH = [
     {
         badge: 'tugas akhir · hki',
         title: 'Sistem Informasi Stok Opname Berbasis Barcode 1D',
-        description: 'Sistem manajemen stok terintegrasi dengan Algoritma Adaptive Binarization untuk mempercepat pemindaian barcode alat berat. Terdaftar sebagai HKI di Kemenkumham RI.',
+        description: 'Sistem manajemen stok terintegrasi dengan Algoritma Adaptive Binarization untuk mempercepat pemindaian barcode alat konstruksi, perkebunan dan pertanian. Terdaftar sebagai HKI di Kemenkumham RI.',
         year: '2026',
     },
     {
