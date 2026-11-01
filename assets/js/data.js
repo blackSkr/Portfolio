@@ -276,7 +276,7 @@ const CERTIFICATIONS = [
 ];
 
 const CONTACTS = [
-    { label: 'WhatsApp', value: '+62 821-6965-2008', icon: 'bi-whatsapp', href: 'https://wa.me/6282189652008' },
+    { label: 'WhatsApp', value: '+62 853-4008-4069', icon: 'bi-whatsapp', href: 'https://wa.me/6285340084069' },
     { label: 'Email', value: 'briliansatria2@gmail.com', icon: 'bi-envelope', href: 'mailto:briliansatria2@gmail.com' },
     { label: 'LinkedIn', value: 'brilian-satria-pamungkas', icon: 'bi-linkedin', href: 'https://www.linkedin.com/in/brilian-satria-pamungkas' },
     { label: 'GitHub', value: 'blackSkr', icon: 'bi-github', href: 'https://github.com/blackSkr' },
